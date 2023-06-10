@@ -42,7 +42,11 @@ def predict_expenses():
 
 # driver function
 if __name__ == '__main__':
-    filename = './finalized_model_v2.sav'
+    filename = 'finalized_model_v2.sav'
     # Load the model
-    loaded_model = pickle.load(open(filename, 'rb'))
+    try:
+        loaded_model = pickle.load(open(filename, 'rb'))
+    except EOFError:
+        print(EOFError)
+    # loaded_model = pickle.load(open(filename, 'rb'))
     app.run()
